@@ -116,7 +116,7 @@
 
                 </div>
                 <div class="box-footer">
-                        <button type="submit" class="btn btn-success btn-block btn-flat" id="submit">Simpan</button> 
+                        <button type="submit" class="btn btn-success btn-block btn-flat" id="submit">Daftar</button> 
                 </div>
               </div>
           </div>
@@ -124,6 +124,9 @@
           <!--/.col (right) -->
         </div>
         </form> 
+
+        <br>
+        <br>
 </div>
 
  

@@ -50,8 +50,7 @@
                           <div id="kelurahan" style="color: red"></div>
                           <input type="text" class="form-control" name="kelurahan" readonly value="<?php echo $data_penyewa['kelurahan'] ?>">
                         </div>
-                      </div> 
- 
+                      </div>  
      
                       <div class="form-group">
                         <label class="col-sm-2 control-label">RT</label>

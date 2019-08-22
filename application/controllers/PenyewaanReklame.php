@@ -9,8 +9,7 @@ class PenyewaanReklame extends CI_Controller
     	parent:: __construct(); 
 		if (!isset ($_SESSION ['no_ktp'])){
 			redirect("Login");
-		}  
-
+		}   
 		// var_dump($_SESSION ['no_ktp']);
 	} 
 
@@ -35,8 +34,7 @@ class PenyewaanReklame extends CI_Controller
 			//get id penyewa by id user 
 			$data_penyewa = $this->M_penyewa->detail(array('id_user' => $id_user));
 
-			var_dump($data_penyewa->num_rows());
-
+			// var_dump($data_penyewa->num_rows()); 
 
 			if ($data_penyewa->num_rows()>0)
 			{

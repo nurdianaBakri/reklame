@@ -39,9 +39,9 @@
                   <td> <?php echo $row['nama']; ?> </td>
                   <td> <?php echo $row['username']; ?> </td>  
                   <td> 
-                      <a class="btn btn-success" href="User/detail/<?php echo $row['no_ktp'];?>"> <i class="fa fa-edit "></i> Edit</a>  
+                      <a class="btn btn-success" href="Jenis_reklame/detail/<?php echo $row['no_ktp'];?>"> <i class="fa fa-edit "></i> Edit</a>  
                       
-                      <a class="btn btn-danger" href="<?php echo site_url('User/hapus/'.$row['no_ktp']);?>"
+                      <a class="btn btn-danger" href="<?php echo site_url('Jenis_reklame/hapus/'.$row['no_ktp']);?>"
                       onclick="return confirm('Apakah Anda yakin ingin menghapus?')"> <i class="icon-trash"></i> <i class="fa fa-trash "></i> Hapus</a>
                 </td>
                 </tr> 
