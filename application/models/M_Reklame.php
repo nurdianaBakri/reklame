@@ -17,6 +17,18 @@ class M_Reklame extends CI_Model
 	{
 		$this->db->where($where);
 		return $this->db->get('reklame');
+	} 
+
+	function update($where,$data)
+	{
+		$this->db->where($where);
+		return $this->db->update('reklame', $data);
+	}
+
+	function hapus($where)
+	{
+		$this->db->where($where);
+		return $this->db->delete('reklame');
 	}
    
     

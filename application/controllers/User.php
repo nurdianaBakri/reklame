@@ -70,7 +70,7 @@ class User extends CI_Controller
 
 	public function detail($id_user)
 	{
-		# code...
+		echo "module sedang di kembangkan";
 	}
 
 	public function hapus($id_user)

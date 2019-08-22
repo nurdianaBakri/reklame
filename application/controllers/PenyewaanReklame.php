@@ -81,6 +81,8 @@ class PenyewaanReklame extends CI_Controller
 			$where3 = array('id_user' =>$this->session->userdata('no_ktp') );
 			$data_penyewa = $this->M_penyewa->detail($where3); 
 
+			// var_dump($data_penyewa->num_rows());
+
 			if ($data_penyewa->num_rows()>0)
 			{
 				$data['data_penyewa'] = $data_penyewa->row_array();
@@ -89,6 +91,7 @@ class PenyewaanReklame extends CI_Controller
 				$data['data_sewa']['produk_rokok'] = 0; 
 				$data['jenis_aksi'] ="add";  
 				$data['id_sewa'] =null;  
+				$data['data_sewa']['id_sewa'] =null; 
 
 				//arahkan ke halaman form sewa
 				$this->load->view('include/header');
@@ -100,7 +103,7 @@ class PenyewaanReklame extends CI_Controller
 				//arahkan ke halaman isi data penyewa/perusahaan 
 				$data['id_reklame'] = $id_reklame;
 				$this->form_perusahaan2($data);
-			}
+			} 
 		}  
 	}
 
@@ -255,7 +258,7 @@ class PenyewaanReklame extends CI_Controller
 		echo "module belum di buat";
 	}
 
-	public function print($id_sewa)
+	public function print2($id_sewa)
 	{
 
 		//get dta sewa dari id sewa 
@@ -286,54 +289,11 @@ class PenyewaanReklame extends CI_Controller
 
 
 	function map(){
-		$this->load->library('googlemaps');
-        $config=array();
-        $config['center'] = '-8.581252, 116.105441';
-        $config['zoom']=14;
-        $config['map_height']="550px";
-        $this->googlemaps->initialize($config);
+		$data = $this->M_map->getAll();
 
-        $marker=array(); 
-        $dataMarker =$this->M_Reklame->getAll();
-        foreach($dataMarker as $row)
-		{ 
-			$content3="";
-			$marker = array();
-			$lat = $row['latitude'];
-			$lng = $row['longitude'];
-			$pst = $lat.','.$lng;
-			$marker['position'] = $pst;
-
-			//masukkan informasi penyewaan ke dalam info window 
-			$where = array(
-				'id_reklame' => $row['id_reklame'], 
-			);
-        	$data_sewa =$this->M_sewa->detail($where); 
-        	if ($data_sewa->num_rows()>0)
-        	{
-        		$data_sewa2 = $data_sewa->row_array(); 
-        		if ($data_sewa2['status_sewa']=='slot ada')
-        		{
-        			$content3 = "<p>Alamat :  ".$row['alamat']."</p> <p>Status : Tersedia</p> <center><a href='index.php/PenyewaanReklame/sewa/".$row['id_reklame']."' onclick='window.open(this.href); return false;'><p>Sewa Sekarang</a></center>";
-        		}
-        		else
-        		{    
-        			$content3 = "<center> onclick='window.open(this.href); return false;'> <p>Mulai Sewa :  ".$row['alamat']."<br>".$data_sewa2['tanggal_mulai_sewa']."</p> <p>Akhir Sewa :  ".$data_sewa2['tanggal_akhir_sewa']."</p> <p>Status :  Tidak tersedia</p> </center>";
-        		}
-        	}
-        	else
-        	{
-        		$content3 = "<p>Alamat :  ".$row['alamat']."</p> <p>Status : Tersedia</p> <center><a href='index.php/PenyewaanReklame/sewa/".$row['id_reklame']."' onclick='window.open(this.href); return false;'><p>Sewa Sekarang</a></center>";  
-        	}  
-			
-			$marker['infowindow_content'] = $content3 ;
-			$marker['onclick'] = $row['id_reklame']; 
-			$marker['icon_scaledSize'] = '25,32';
-			$this->googlemaps->add_marker($marker);
-		} 
-        $data['map']=$this->googlemaps->create_map();  
-
-        return $data;
+        $this->load->view('include/header');
+		$this->load->view('penyewaan/map',$data);
+		$this->load->view('include/footer'); 
 	}  
 
  

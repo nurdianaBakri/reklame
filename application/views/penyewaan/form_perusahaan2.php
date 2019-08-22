@@ -4,7 +4,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>  Data Penyewa </h1> 
+      <h1>  Data Perusahaan/Penyewa </h1> 
     </section>
 
     <!-- Main content -->
@@ -19,7 +19,7 @@
                       <!-- Horizontal Form -->
                       <div class="box box-success">
                         <div class="box-header with-border">
-                          <h3 class="box-title">Daftar</h3>
+                          <h3 class="box-title">Daftar Perusahaan</h3>
                         </div> 
                           <div class="box-body">  
                               <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('no_ktp'); ?>">

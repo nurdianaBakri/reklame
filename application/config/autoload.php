@@ -138,5 +138,6 @@ $autoload['model'] = array(
 'M_user',
 'M_sewa',
 'M_penyewa',
-'M_jenis_reklame'
+'M_jenis_reklame',
+'M_map'
 );

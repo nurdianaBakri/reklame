@@ -200,7 +200,10 @@
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success btn-flat" id="submit">Simpan</button> 
-                        <a target="_blank" class="btn btn-success btn-flat" href="<?php echo base_url()."index.php/PenyewaanReklame/print/".$data_sewa['id_sewa'] ?>">Print Bukti</a>
+                        <?php if ($data_sewa['id_sewa']!=null): ?>
+                          <a target="_blank" class="btn btn-success btn-flat" href="<?php echo base_url()."index.php/PenyewaanReklame/print2/".$data_sewa['id_sewa'] ?>">Print Bukti</a>
+                        <?php endif ?>
+                        
                     </div>
                   </div>
               </div>

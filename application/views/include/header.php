@@ -34,8 +34,6 @@
   <link rel="stylesheet" href="<?php echo base_url();?>/assets2/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
   <script src="<?php echo base_url();?>/assets2/plugins/jQuery/jquery-2.2.3.min.js"></script>
-
-
   
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -66,11 +64,19 @@
         <li>
           <a href="<?php echo base_url();?>index.php/PenyewaanReklame">
             <i class="fa fa-circle-o"></i> Penyewaan Reklame</a>
-        </li>
+        </li> 
+        <li>
+            <a href="<?php echo base_url();?>index.php/Map">
+              <i class="fa fa-circle-o"></i>Map</a>
+          </li>
         <?php if ($this->session->userdata('jenis_user')=='admin'){ ?>
            <li>
             <a href="<?php echo base_url();?>index.php/Jenis_reklame">
               <i class="fa fa-circle-o"></i> Jenis reklame</a>
+          </li>
+          <li>
+            <a href="<?php echo base_url();?>index.php/Reklame">
+              <i class="fa fa-circle-o"></i> reklame</a>
           </li>
             <li>
             <a href="<?php echo base_url();?>index.php/User">

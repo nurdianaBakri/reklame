@@ -44,7 +44,7 @@
                    ?> </td>
                   <td> <?php
                    $this->db->where('id_penyewa',$row['id_penyewa']);
-                    $nama_perusahaan = $this->db->get('penyewa')->row_array()['nama_perusahaan']; 
+                    $nama_perusahaan = $this->db->get('penyewa')->row_array()['nama_perusahaan'];
                     echo $nama_perusahaan;   
                    ?> </td>
                   <td> <?php echo $row['lama_sewa']; ?> </td>
