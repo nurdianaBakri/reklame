@@ -22,8 +22,8 @@
                           <h3 class="box-title">Daftar</h3>
                         </div> 
                           <div class="box-body">  
-                                <input type="text" name="id_user" value="<?php echo $this->session->userdata('no_ktp'); ?>">
-                                <input type="text" name="id_reklame" value="<?php echo $id_reklame ?>">
+                              <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('no_ktp'); ?>">
+                              <input type="hidden" name="id_reklame" value="<?php echo $id_reklame ?>">
 
                            
                             <div class="form-group">
