@@ -30,10 +30,14 @@
     <p class="login-box-msg"></p>
 
     <?php if ($this->session->flashdata('pesan')!=null)
-    {
-      echo $this->session->flashdata('pesan');
+    { ?> 
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Alert !</h4> 
+        <?php echo "<p>".$this->session->flashdata('pesan')."</p>"; ?>
+      </div> 
+      <?php 
     }
-     ?>
+     ?>   
 
     <form action="<?php echo base_url()."index.php/Login/getLogin"; ?>" method="post">
       <div class="form-group has-feedback">

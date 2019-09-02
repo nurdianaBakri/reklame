@@ -1,8 +1,5 @@
-
-   
-
    <div class="container"  style="margin-top:60px">  
-      <form class="form-horizontal" action="<?php echo base_url('index.php/User/do_daftar'); ?>" method="post" name="myForm">
+      <form class="form-horizontal" action="<?php echo base_url('index.php/User/do_daftar'); ?>" method="post"  enctype="multipart/form-data" name="myForm">
         <div class="row">
           <!-- right column -->
           <div class="col-md-12">
@@ -99,6 +96,21 @@
                   </div> 
 
                   <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">NPWP</label>
+                    <div class="col-sm-4">
+                      <div id="npwp" style="color: red"></div>
+                      <input type="text" class="form-control" name="npwp" required>
+                    </div>
+
+                    <label for="inputPassword3" class="col-sm-2 control-label">Scan NPWP</label>
+                    <div class="col-sm-4">
+                      <div id="scan_npwp" style="color: red"></div>
+                      <input type="file" class="form-control" name="scan_npwp" required>
+                    </div>
+
+                  </div> 
+ 
+                   <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">Username</label>
                     <div class="col-sm-10">
                       <div id="username" style="color: red"></div>
@@ -116,7 +128,7 @@
 
                 </div>
                 <div class="box-footer">
-                        <button type="submit" class="btn btn-success btn-block btn-flat" id="submit">Simpan</button> 
+                    <button type="submit" class="btn btn-success btn-block btn-flat" id="submit">Simpan</button> 
                 </div>
               </div>
           </div>

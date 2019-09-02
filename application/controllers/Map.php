@@ -13,8 +13,6 @@ class Map extends CI_Controller {
 		$this->load->view('include/header');
 		$this->load->view('map/index',$data);
 		$this->load->view('include/footer'); 
-	}  
-
-	
+	} 
 	 
 }

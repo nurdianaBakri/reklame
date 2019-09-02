@@ -191,6 +191,8 @@ class PenyewaanReklame extends CI_Controller
 		$rw = $this->input->post('rw');
 		$kecamatan = $this->input->post('kecamatan'); 
 		$no_telp_kantor = $this->input->post('no_telp_kantor'); 
+		$npwp = $this->input->post('npwp');   
+		$scan_npwp = "perusahaan_".$id_user;  
 
 		$data = array(
 			'id_user'=>$id_user,
@@ -202,21 +204,19 @@ class PenyewaanReklame extends CI_Controller
 			'rw'=>$rw,
 			'kecamatan'=>$kecamatan, 
 			'no_telp_kantor'=>$no_telp_kantor,
+			'npwp'=>$npwp,
+			'scan_npwp'=>$scan_npwp.".png",
 		);
+
+		//uplod file
+		$uploadfile = $this->doConfig($scan_npwp);   
 
 		$insert = $this->M_penyewa->insert($data);
 		if ($insert==true)
 		{	
 			//tambahkan pesan berhasil 
-			$this->session->set_flashdata('pesan',"Pendaftaran Penyewa berhasil, silahkan login");
-			// if (isset($id_reklame)) {
-			// 	//redirect ke halaman sewa reklame
-			// 	redirect('PenyewaanReklame/sewa/'.$id_reklame);
-			// }
-			// else
-			// {
-					redirect('PenyewaanReklame/map');
-			// }
+			$this->session->set_flashdata('pesan',"Pendaftaran Penyewa berhasil, silahkan login"); 
+			redirect('PenyewaanReklame/map'); 
 		}
 		else
 		{
@@ -224,6 +224,37 @@ class PenyewaanReklame extends CI_Controller
 
 		}
 	}
+
+	public function doConfig($file_name)
+    {
+    	$data = array();
+    	$config['upload_path']        = './uploads/';
+		$config['file_name']          = $file_name.".png";
+        $config['allowed_types']      = 'jpg|png|jpeg|JPG|PNG|JPEG';
+        $config['overwrite'] = TRUE;
+
+		$path = $_FILES['scan_npwp']['name'];
+		$ext = pathinfo($path, PATHINFO_EXTENSION);
+
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('scan_npwp'))
+        {
+            $data = array(
+                'berhasil' =>FALSE ,
+                'error' => $this->upload->display_errors(),
+            );
+        }
+        else
+        {
+            $upload = $this->upload->data();
+            $data = array(
+                'berhasil' =>TRUE ,
+                'error' => $upload,
+            );
+        }
+        return $data;
+    }
+
 
 	public function detail($id_sewa)
 	{

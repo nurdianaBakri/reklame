@@ -12,7 +12,7 @@
 
        <div class="box">
              
-           <form class="form-horizontal" action="<?php echo base_url('index.php/PenyewaanReklame/do_daftar'); ?>" method="post" name="myForm">
+           <form class="form-horizontal" action="<?php echo base_url('index.php/PenyewaanReklame/do_daftar'); ?>" enctype="multipart/form-data" method="post" name="myForm">
                   <div class="row">
                     <!-- right column -->
                     <div class="col-md-12">
@@ -86,6 +86,22 @@
                               </div>
                             </div> 
  
+
+                          <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">NPWP</label>
+                            <div class="col-sm-4">
+                              <div id="npwp" style="color: red"></div>
+                              <input type="text" class="form-control" name="npwp" required>
+                            </div>
+
+                            <label for="inputPassword3" class="col-sm-2 control-label">Scan NPWP</label>
+                            <div class="col-sm-4">
+                              <div id="scan_npwp" style="color: red"></div>
+                              <input type="file" class="form-control" name="scan_npwp" required>
+                            </div>
+
+                          </div> 
+
 
                           </div>
                           <div class="box-footer">

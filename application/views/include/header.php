@@ -69,6 +69,14 @@
             <a href="<?php echo base_url();?>index.php/Map">
               <i class="fa fa-circle-o"></i>Map</a>
           </li>
+
+           <?php if ($this->session->userdata('jenis_user')=='user'){ ?>
+           <li>
+            <a href="#">
+              <i class="fa fa-circle-o"></i>Profile</a>
+          </li> 
+        <?php } ?>
+
         <?php if ($this->session->userdata('jenis_user')=='admin'){ ?>
            <li>
             <a href="<?php echo base_url();?>index.php/Jenis_reklame">
