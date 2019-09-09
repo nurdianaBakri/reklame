@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Sep 2019 pada 16.11
+-- Waktu pembuatan: 09 Sep 2019 pada 17.39
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.3.7
 
@@ -64,7 +64,8 @@ CREATE TABLE `ketentuan` (
 INSERT INTO `ketentuan` (`id_ketentuan`, `luas_bidang_a`, `luas_bidang_b`, `ketinggian`, `jenis_reklame`) VALUES
 (1, 230000, 460000, 10000, 1),
 (2, 46000, 92000, 10000, 2),
-(3, 23000, 46000, 10000, 3);
+(3, 23000, 46000, 10000, 3),
+(4, 14000, 28000, 10000, 4);
 
 -- --------------------------------------------------------
 
@@ -126,10 +127,7 @@ CREATE TABLE `penyewa` (
 --
 
 INSERT INTO `penyewa` (`nama_perusahaan`, `kode_pos`, `lingkungan`, `kelurahan`, `rt`, `rw`, `kecamatan`, `no_telp_kantor`, `id_user`, `id_penyewa`, `npwp`, `scan_npwp`) VALUES
-('dandi pura', 121, 'dandi', 'dandi', 13, 321, 'dandi', '434029449', '432432432', 2, '', ''),
-('pt anang', 4289, 'mataram', 'mataram', 12, 12, 'mataram', '434829', '0503808', 3, '', ''),
-('re', 43, 'rew', 're', 3, 43, '43', '443', '121212', 4, '', ''),
-('22', 22, '221', '222', 22, 22, '22', '22', '222', 5, '22', 'perusahaan_222.png');
+('PT. Boy Arista', 12, 'mataram', 'mataram', 12, 12, 'mataram', '493848', '12345', 6, '8438498', 'perusahaan_12345.png');
 
 -- --------------------------------------------------------
 
@@ -158,9 +156,9 @@ CREATE TABLE `reklame` (
 
 INSERT INTO `reklame` (`id_reklame`, `id_jenis_reklame`, `jumlah_sisi`, `alamat`, `latitude`, `longitude`, `deskripsi`, `foto`, `panjang`, `lebar`, `ketinggian`, `klasifikasi_jalan`) VALUES
 (1, 1, 1, 'Jl. Bung Karno No.3 Pagesangan Tim. Kec. Mataram Kota Mataram', '-8.599946', '116.113886', '', 'rsud.jpg', 12, 10, 20, 'A'),
-(2, 1, 1, 'Jl. Pejanggik Mataram', '-8.607190', '116.131815', '', '', 12, 10, 20, 'A'),
+(2, 1, 1, 'Jl. Pejanggik Mataram', '-8.607190', '116.131815', '', '', 4, 1, 9, 'A'),
 (3, 1, 1, 'Jl. Langko No.64, Pejeruk, Ampenan, Kota Mataram, Nusa Tenggara Bar. 83112', '-8.577035', '116.084210', '', 'rs.jpg', 12, 10, 20, 'A'),
-(4, 1, 1, 'hhhh', '-8.580257', '116.109951', 'gdgfgh', 'wira bhakti.jpg', 12, 10, 20, 'A'),
+(4, 4, 1, 'hhhh', '-8.580257', '116.109951', 'gdgfgh', 'wira bhakti.jpg', 4, 1, 9, 'A'),
 (5, 1, 1, 'Jl. Ahmad Yani No.9, Selagalas, Mataram, Kota Mataram, Nusa Tenggara Bar. 83237', '-8.579098', '116.146835', '', 'rs.jpg', 12, 10, 20, 'A'),
 (6, 1, 1, 'Jl. Pejanggik No. 115, Cakranegara, Cilinaya, Cakranegara, Kota Mataram', '-8.587076', '116.122802', '', 'risa.jpg', 2, 10, 3, 'A'),
 (7, 1, 1, 'Jl. Caturwarga Mataram', '-8.587160', '116.114284', '', 'rs.jpg', 12, 10, 20, 'A'),
@@ -224,7 +222,8 @@ INSERT INTO `reklame` (`id_reklame`, `id_jenis_reklame`, `jumlah_sisi`, `alamat`
 (65, 1, 1, 'Jl. Bung Karno', '-8.601586', '116.113542', '', 'apotek.jpg', 12, 10, 20, 'A'),
 (66, 1, 1, 'Jl. Bung Karno no 51 Mataram', '-8.596340', '116.113118', '', 'apotek.jpg', 12, 10, 20, 'A'),
 (67, 1, 1, 'Jl. Pejanggik Blok B no 48 Cakranegara', '-8.586341', '116.119294', '', 'apotek.jpg', 12, 10, 20, 'A'),
-(68, 1, 1, 'Jl. Subak Cakranegara', '-8.586616', '116.124695', '', 'apotek.jpg', 12, 10, 20, 'A');
+(68, 1, 1, 'Jl. Subak Cakranegara', '-8.586616', '116.124695', '', 'apotek.jpg', 12, 10, 20, 'A'),
+(70, 1, 2, 'unram', '-8.585549', '116.092219', '', '', 9, 2, 2, 'B');
 
 -- --------------------------------------------------------
 
@@ -239,7 +238,7 @@ CREATE TABLE `sewa` (
   `lama_sewa` int(11) NOT NULL COMMENT 'dalam bulan',
   `id_sewa` int(11) NOT NULL,
   `status_pajak` enum('lunas','belum di bayar') NOT NULL,
-  `status_sewa` enum('lunas','belum di bayar','slot ada') NOT NULL,
+  `status_sewa` enum('lunas','belum di bayar','slot ada','tertolak') NOT NULL,
   `tanggal_mulai_sewa` date NOT NULL,
   `tanggal_akhir_sewa` date NOT NULL,
   `produk_rokok` tinyint(1) NOT NULL
@@ -250,9 +249,9 @@ CREATE TABLE `sewa` (
 --
 
 INSERT INTO `sewa` (`id_reklame`, `id_user`, `id_penyewa`, `lama_sewa`, `id_sewa`, `status_pajak`, `status_sewa`, `tanggal_mulai_sewa`, `tanggal_akhir_sewa`, `produk_rokok`) VALUES
-(48, 2147483647, 2, 12, 1, 'lunas', 'lunas', '2023-09-19', '2024-09-19', 0),
-(18, 2147483647, 2, 6, 2, 'lunas', 'lunas', '2021-08-20', '2022-02-20', 1),
-(20, 432432432, 2, 3, 3, 'belum di bayar', 'belum di bayar', '2019-08-22', '2019-11-22', 1);
+(51, 12345, 6, 3, 4, 'belum di bayar', 'belum di bayar', '2019-05-09', '2019-08-09', 0),
+(19, 12345, 6, 12, 5, 'belum di bayar', 'tertolak', '2019-09-30', '2020-09-30', 0),
+(4, 12345, 6, 12, 6, 'belum di bayar', 'belum di bayar', '2019-09-10', '2020-09-10', 1);
 
 -- --------------------------------------------------------
 
@@ -306,12 +305,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`nama`, `no_ktp`, `tempat_lahir`, `tanggal_lahir`, `lingkungan`, `kelurahan`, `rt`, `rw`, `pekerjaan`, `kecamatan`, `no_hp`, `jenis_user`, `username`, `password`, `scan_ktp`) VALUES
-('anang', '0503808', 'mataram', '2019-08-22', 'mataram', 'mataram', 12, 212, 'programmmer', 'mataram', '3042039', 'user', 'anang', '2326af735beba37279d41c7f0ab62e73', ''),
-('adi', '121212', 'mataram', '0013-03-21', 'mataram', 'mataram', 12, 12, 'mahasiswa', 'mataram', '21231', 'user', 'adi', 'c46335eb267e2e1cde5b017acb4cd799', 'user_121212.png'),
-('22', '222', '22', '0222-02-22', '221', '222', 22, 22, '22', '22', '22', 'user', '22', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'user_222.png'),
-('anisa', '409439', 'mataram', '0097-08-07', 'mataram', 'mataram', 12, 12, 'proggrammer', 'mataram', '094309', 'user', 'anisa', '5f58dafe3fcc826377c1007ccf1a573c', ''),
-('dandi', '432432432', 'dandi', '2019-08-17', 'dandi', 'dandi', 2, 2, 'dandi', 'dandi', '241', 'user', 'dandi', '32408919e7c985cf5439ebda3e1eb0f5', ''),
-('boy', '432532', 'mataram', '2019-01-06', 'mataram', 'mataram', 12, 12, 'direktur pt.adidaya', 'mataram', '43085358', 'admin', 'boy', '6ff47661c8b81660a4d56a5c71cb1b45', '');
+('admin', '1234', 'mataram', '0033-12-12', 'mataram', 'mataram', 12, 12, 'admin', 'mataram', '3232', 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'user_1234.png'),
+('boy', '12345', 'mataram', '0229-12-31', 'mataram', 'mataram', 12, 12, 'mataram', 'mataram', '2222', 'user', 'boy', '1a699ad5e06aa8a6db3bcf9cfb2f00f2', 'user_12345.png');
 
 --
 -- Indexes for dumped tables
@@ -385,7 +380,7 @@ ALTER TABLE `jenis_reklame`
 -- AUTO_INCREMENT untuk tabel `ketentuan`
 --
 ALTER TABLE `ketentuan`
-  MODIFY `id_ketentuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ketentuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `ketinggian`
@@ -403,19 +398,19 @@ ALTER TABLE `lokasi_jalan`
 -- AUTO_INCREMENT untuk tabel `penyewa`
 --
 ALTER TABLE `penyewa`
-  MODIFY `id_penyewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_penyewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `reklame`
 --
 ALTER TABLE `reklame`
-  MODIFY `id_reklame` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_reklame` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT untuk tabel `sewa`
 --
 ALTER TABLE `sewa`
-  MODIFY `id_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `sudut_pandang`

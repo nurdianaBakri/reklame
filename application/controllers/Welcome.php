@@ -14,8 +14,7 @@ class Welcome extends CI_Controller {
         $this->load->view('header');
 		$this->load->view('beranda/index',$data);
 		$this->load->view('footer');  
-	}  
-
+	}   
 	
 	public function filter_reklame()
 	{
@@ -60,7 +59,6 @@ class Welcome extends CI_Controller {
 	        $data['map']=$this->googlemaps->create_map(); 
 		}
 
-		$this->load->view('beranda/hasil_filter',$data);
-
+		$this->load->view('beranda/hasil_filter',$data); 
 	}
 }

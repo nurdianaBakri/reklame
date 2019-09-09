@@ -69,6 +69,7 @@ class User extends CI_Controller
 			'rt'=>$rt,
 			'rw'=>$rw,
 			'kecamatan'=>$kecamatan,
+			'scan_ktp'=>"user_".$no_ktp.'.png',
 			'pekerjaan'=>$pekerjaan,
 			'no_hp'=>$no_hp,
 			'scan_ktp'=>"user_".$no_ktp.".png",
@@ -156,13 +157,13 @@ class User extends CI_Controller
 		{	
 			//tambahkan pesan berhasil 
 			$this->session->set_flashdata('pesan',"update user berhasil, silahkan login");
-			redirect('User/detail/'.$no_ktp);
+			redirect('User/profile/');
 		}
 		else
 		{
 			//tambahkan pesan berhasil 
 			$this->session->set_flashdata('pesan',"update user gagal, silahkan cobba lagi");
-			redirect('User/detail/'.$no_ktp);
+			redirect('User/profile/');
 		}
 	}
 
@@ -208,6 +209,25 @@ class User extends CI_Controller
 		$this->load->view('user1/detail',$data);
 		$this->load->view('include/footer');
 	}
+
+	public function profile()
+	{
+		$no_ktp = $this->session->userdata('no_ktp');
+		$where = array(
+			'no_ktp' => $no_ktp, 
+		);
+		$data['data'] = $this->M_user->detail($where)->row_array();
+ 		 
+ 		$where = array(
+			'id_user' => $no_ktp, 
+		); 
+		$data['data_perusahaan'] =  $this->M_penyewa->detail($where)->row_array();  
+ 
+		$this->load->view('include/header');
+		$this->load->view('user1/profile',$data);
+		$this->load->view('include/footer');
+	} 
+
 
 	public function hapus($no_ktp)
 	{

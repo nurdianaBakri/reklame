@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Super Admin| Admin</title>
+  <title>SI | REKLAME</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -62,38 +62,38 @@
         <li class="header">MAIN NAVIGATION</li>   
 
         <li>
-          <a href="<?php echo base_url();?>index.php/PenyewaanReklame">
+          <a href="<?php echo base_url();?>PenyewaanReklame">
             <i class="fa fa-circle-o"></i> Penyewaan Reklame</a>
         </li> 
         <li>
-            <a href="<?php echo base_url();?>index.php/Map">
+            <a href="<?php echo base_url();?>Map">
               <i class="fa fa-circle-o"></i>Map</a>
           </li>
 
            <?php if ($this->session->userdata('jenis_user')=='user'){ ?>
-           <li>
-            <a href="#">
+           <li> 
+            <a href="<?php echo base_url();?>User/profile/">
               <i class="fa fa-circle-o"></i>Profile</a>
           </li> 
         <?php } ?>
 
         <?php if ($this->session->userdata('jenis_user')=='admin'){ ?>
            <li>
-            <a href="<?php echo base_url();?>index.php/Jenis_reklame">
+            <a href="<?php echo base_url();?>Jenis_reklame">
               <i class="fa fa-circle-o"></i> Jenis reklame</a>
           </li>
           <li>
-            <a href="<?php echo base_url();?>index.php/Reklame">
+            <a href="<?php echo base_url();?>Reklame">
               <i class="fa fa-circle-o"></i> reklame</a>
           </li>
             <li>
-            <a href="<?php echo base_url();?>index.php/User">
+            <a href="<?php echo base_url();?>User">
               <i class="fa fa-circle-o"></i> user </a>
           </li> 
         <?php } ?>
          
         <li class="treeview">
-          <a href="<?php echo base_url();?>index.php/Login/logout">
+          <a href="<?php echo base_url();?>Login/logout">
             <i class="glyphicon glyphicon-off"></i> <span>Logout</span>
             <span class="pull-right-container"> 
             </span>

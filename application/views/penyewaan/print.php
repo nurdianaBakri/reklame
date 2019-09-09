@@ -30,7 +30,7 @@
                           $produk_rokok='Non Rokok'; 
                         } 
                       ?>
-                     <table>
+                     <table class="table table-striped">
                        <tr>
                          <td width="25%">No. Urut</td>
                          <td>:</td>
@@ -56,28 +56,17 @@
                        </tr>
 
                          <tr>
-                         <td>Panjang</td>
+                         <td>Panjang x Lembar x Ketinggian</td>
                          <td>:</td>
-                         <td><?php echo $data_reklame['panjang']; ?></td>
+                         <td><?php echo $data_reklame['panjang'] . " x ".$data_reklame['lebar'].' x '.$ketinggian; ?></td>
                        </tr>
-
-                        <tr>
-                         <td>Lebar</td>
-                         <td>:</td>
-                         <td><?php echo $data_reklame['lebar']; ?></td>
-                       </tr>
-
+ 
                         <tr>
                          <td>Luas</td>
                          <td>:</td>
                          <td><?php echo $luas; ?></td>
                        </tr>
-
-                       <tr>
-                         <td>Ketinggian</td>
-                         <td>:</td>
-                         <td><?php echo $ketinggian; ?></td>
-                       </tr>
+ 
 
                        <tr>
                          <td>Sudut Pandang</td>
@@ -88,7 +77,7 @@
                      </table>
                     </div>
                     <div class="col-sm-6">
-                      <table> 
+                      <table class="table table-striped"> 
                         <tr>
                          <td width="25%">Sisi</td>
                          <td>:</td>
@@ -139,6 +128,8 @@
                         {
                           $this->db->where('jenis_reklame',$data_reklame['id_jenis_reklame']);
                           $data_ketentuan = $this->db->get('ketentuan')->row_array();
+
+                          // var_dump($data_reklame['id_jenis_reklame']);
                           $x_luas =$data_ketentuan['luas_bidang_a'];
                           $x_ketinggian =$data_ketentuan['ketinggian'];
                         }
@@ -158,7 +149,7 @@
                         $NJOPLuas =$luas * $x_luas; 
                         $NJOPKetinggian =$ketinggian*$x_ketinggian; 
                       ?>
-                      <table> 
+                      <table class="table table-striped"> 
                        <tr>
                            <td><b>NJOP</b></td>
                            <td></td>
@@ -240,7 +231,7 @@
                       $total_nilai_strategis = $bobot_total * $nsns;
 
                       ?>
-                      <table> 
+                      <table class="table table-striped"> 
                        <tr>
                            <td"><b>NILAI STRATEGIS</b></td>
                            <td></td>
@@ -301,7 +292,7 @@
                         ?>
 
                         <br>
-                        <table> 
+                        <table class="table table-striped"> 
                          <tr>
                             <td>TOTAL NILAI STRATEGIS</td>
                              <td>:</td>
@@ -348,7 +339,7 @@
 
                         ?>
                         
-                        <table> 
+                        <table class="table table-striped"> 
                          <tr>
                             <td>SISI BIDANG REKLAME</td>
                              <td>:</td>

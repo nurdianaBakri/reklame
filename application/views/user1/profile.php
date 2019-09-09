@@ -143,7 +143,7 @@
 
                 </div>
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-success btn-block btn-flat" id="submit">Update</button> 
+                  <button type="submit" class="btn btn-success btn-block btn-flat" id="submit">Update user</button> 
                 </div>
               </div>
           </div>
@@ -151,6 +151,119 @@
           <!--/.col (right) -->
         </div>
         </form> 
+
+        <div class="box">
+             
+           <form class="form-horizontal" action="<?php echo base_url('index.php/Perusahaan/do_update'); ?>" enctype="multipart/form-data" method="post" name="myForm">
+                  <div class="row">
+                    <!-- right column -->
+                    <div class="col-md-12">
+                      <!-- Horizontal Form -->
+                      <div class="box box-success">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Data Perusahaan</h3>
+                        </div> 
+                          <div class="box-body">  
+                              <input type="hidden" name="id_penyewa" value="<?php echo $data_perusahaan['id_penyewa']; ?>"> 
+                              <input type="hidden" name="id_user" value="<?php echo $data['no_ktp']; ?>"> 
+                           
+                            <div class="form-group">
+                              <label for="inputPassword3" class="col-sm-2 control-label">Nama Perushaan</label>
+                              <div class="col-sm-10">
+                                <div id="nama_perusahaan" style="color: red"></div>
+                                <input type="text" class="form-control" value="<?= $data_perusahaan['nama_perusahaan'];?>" name="nama_perusahaan" required>
+                              </div>
+                            </div>  
+
+                            <div class="form-group">
+                              <label for="inputPassword3" class="col-sm-2 control-label">Lingkungan</label>
+                              <div class="col-sm-10">
+                                <div id="lingkungan" style="color: red"></div>
+                                <input type="text" class="form-control" value="<?= $data_perusahaan['lingkungan'];?>" name="lingkungan" required>
+                              </div>
+                            </div> 
+
+                            <div class="form-group">
+                              <label for="inputPassword3" class="col-sm-2 control-label">Kelurahan</label>
+                              <div class="col-sm-10">
+                                <div id="kelurahan" style="color: red"></div>
+                                <input type="text" class="form-control" value="<?= $data_perusahaan['kelurahan'];?>" name="kelurahan" required>
+                              </div>
+                            </div> 
+           
+                            <div class="form-group">
+                              <label for="inputPassword3" class="col-sm-2 control-label">RT</label>
+                              <div class="col-sm-2">
+                                <div id="rt" style="color: red"></div>
+                                <input type="number" class="form-control" value="<?= $data_perusahaan['rt'];?>" name="rt" required>
+                              </div>
+
+                              <label for="inputPassword3" class="col-sm-2 control-label">RW</label>
+                              <div class="col-sm-2">
+                                <div id="rw" style="color: red"></div>
+                                <input type="number" class="form-control" value="<?= $data_perusahaan['rw'];?>" name="rw" required>
+                              </div> 
+
+                               <label for="inputPassword3" class="col-sm-2 control-label">Kode Pos</label>
+                              <div class="col-sm-2">
+                                <div id="kode_pos" style="color: red"></div>
+                                <input type="number" class="form-control" value="<?= $data_perusahaan['kode_pos'];?>" name="kode_pos" required>
+                              </div> 
+                            </div>   
+                            
+                             <div class="form-group">
+                              <label for="inputPassword3" class="col-sm-2 control-label">Kecamatan</label>
+                              <div class="col-sm-10">
+                                <div id="kecamatan" style="color: red"></div>
+                                <input type="text" class="form-control" value="<?= $data_perusahaan['kecamatan'];?>" name="kecamatan" required>
+                              </div>
+                            </div> 
+ 
+                            <div class="form-group">
+                              <label for="inputPassword3" class="col-sm-2 control-label">No Telp Perusahaan</label>
+                              <div class="col-sm-10">
+                                <div id="no_telp_kantor" style="color: red"></div>
+                                <input type="number" class="form-control" value="<?= $data_perusahaan['no_telp_kantor'];?>" name="no_telp_kantor" required>
+                              </div>
+                            </div> 
+ 
+
+                          <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">NPWP</label>
+                            <div class="col-sm-4">
+                              <div id="npwp" style="color: red"></div>
+                              <input type="text" class="form-control" value="<?= $data_perusahaan['npwp'];?>" name="npwp" required>
+                            </div>
+
+                            <label for="inputPassword3" class="col-sm-2 control-label">Scan NPWP</label>
+                            <div class="col-sm-4">
+                              <div id="scan_npwp" style="color: red"></div>
+                              <input type="file" class="form-control" name="scan_npwp" >
+                            </div>
+
+                          </div> 
+
+                           <div class="form-group">  
+
+                              <label for="inputPassword3" class="col-sm-2 control-label">Perview NPWP</label>
+                              <div class="col-sm-4">
+                                <div id="password"></div>
+                               <img src="<?php echo base_url()."uploads/".$data_perusahaan['scan_npwp']; ?>" width="200" height="200">
+                              </div>
+                            </div>  
+
+                          </div>
+                          <div class="box-footer">
+                                  <button type="submit" class="btn btn-success btn-block btn-flat" id="submit">Update perushaan</button> 
+                          </div>
+                        </div>
+                    </div>
+                   
+                    <!--/.col (right) -->
+                  </div>
+                  </form>  
+          </div>
+
        
     </section>
        

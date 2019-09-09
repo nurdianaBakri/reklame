@@ -1,28 +1,28 @@
 
 <div class="container"  style="margin-top:60px">  
-	<?php echo $map['js'];?>  
-  <div class="row">
-    <div class="col-md-12">
-      <?php echo $map['html'];?> 
-    </div> 
-   <!--  <div class="col-md-2"> 
-      Filter Papan Reklame
-      <select name="kode_filter"  id="kode_filter" class="form-control">
-      	<option value="1">Semua</option>
-      	<option value="2">Hampir Berakhir masa kontrak</option>
-      	<option value="3">Berakhir masa kontrak</option>
-      </select>
-    </div> -->
-  </div> 
+
+    <div class="row">
+        <div class="col-md-9">
+            <?php echo $map['js'];?>  
+            <div class="row">
+                <div class="col-md-12">
+                  <?php echo $map['html'];?> 
+                </div>  
+            </div> 
+        </div>
+        <div class="col-md-3">
+            <h3>Keterangan : </h3>
+            <li><img src="<?php echo base_url()."assets4/images/pinmerah.png" ?>" height="20px" width="20px" >Lokasi Sedang di pakai</li>
+            <li><img src="<?php echo base_url()."assets4/images/pinhijau.png" ?>" height="20px" width="20px" > Lokasi Tersedia</li>
+            <li><img src="<?php echo base_url()."assets4/images/pinkuning.png" ?>" height="20px" width="20px" >Lokasi Menuggu Verifikasi</li>
+        </div>
+    </div>
+        	 
 
 </div>
 
 
-<script type="text/javascript">
-	// $(document).ready(function(){
-	// 	var kode_filter = $('#kode_filter').val();
-	//     filter_reklame(kode_filter);
-	// }); 
+<script type="text/javascript"> 
 
 	function filter_reklame() { 
 		var kode_filter = $('#kode_filter').val();

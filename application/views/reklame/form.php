@@ -71,12 +71,12 @@
                     <label for="inputPassword3" class="col-sm-2 control-label">Latitude</label>
                     <div class="col-sm-4">
                       <div id="latitude" style="color: red"></div>
-                      <input type="number" class="form-control" name="latitude" value="<?php echo $data['latitude'] ?>" required>
+                      <input type="text" class="form-control" name="latitude" value="<?php echo $data['latitude'] ?>" required>
                     </div>
                      <label for="inputPassword3" class="col-sm-2 control-label">Longitude</label>
                     <div class="col-sm-4">
                       <div id="longitude" style="color: red"></div>
-                      <input type="number" class="form-control" name="longitude" value="<?php echo $data['longitude'] ?>" required>
+                      <input type="text" class="form-control" name="longitude" value="<?php echo $data['longitude'] ?>" required>
                     </div>
                   </div>   
 

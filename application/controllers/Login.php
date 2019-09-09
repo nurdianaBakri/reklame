@@ -15,6 +15,7 @@ class Login extends CI_Controller
 		$u = $this->input->post('username');
 		$p = $this->input->post('password');
 
+
 		//cek kosong apa tidak 
 		if ($u == ""|| $p == ""){
 
@@ -27,14 +28,24 @@ class Login extends CI_Controller
 		{ 
 			$result = false; 
 			$result= $this->M_login->login($u, $p);
-			if ($this->session->userdata('jenis_user')=='admin')
-			{ 
-				redirect('PenyewaanReklame'); 
+			if ($result==false)
+			{
+				$this->session->set_flashdata('pesan',"Username atau Password Tidak cocok");  
+				redirect ('Login');
+				# code...
 			}
 			else
 			{
-				redirect('PenyewaanReklame');
-			} 
+				if ($this->session->userdata('jenis_user')=='admin')
+				{ 
+					redirect('PenyewaanReklame'); 
+				}
+				else
+				{
+					redirect('PenyewaanReklame');
+				} 
+
+			}
 		}
 	}  
 

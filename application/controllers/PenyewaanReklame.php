@@ -9,8 +9,7 @@ class PenyewaanReklame extends CI_Controller
     	parent:: __construct(); 
 		if (!isset ($_SESSION ['no_ktp'])){
 			redirect("Login");
-		}   
-		// var_dump($_SESSION ['no_ktp']);
+		}    
 	} 
 
 	public function index()
@@ -81,17 +80,20 @@ class PenyewaanReklame extends CI_Controller
 			$where3 = array('id_user' =>$this->session->userdata('no_ktp') );
 			$data_penyewa = $this->M_penyewa->detail($where3); 
 
-			// var_dump($data_penyewa->num_rows());
-
+			// var_dump($data_penyewa->num_rows()); 
 			if ($data_penyewa->num_rows()>0)
 			{
 				$data['data_penyewa'] = $data_penyewa->row_array();
 				$data['data_sewa']['lama_sewa'] = null;
 				$data['data_sewa']['tanggal_mulai_sewa'] = null; 
 				$data['data_sewa']['produk_rokok'] = 0; 
+				$data['data_sewa']['status_sewa'] = "belum di bayar"; 
+				$data['data_sewa']['status_pajak'] = "belum di bayar"; 
 				$data['jenis_aksi'] ="add";  
 				$data['id_sewa'] =null;  
 				$data['data_sewa']['id_sewa'] =null; 
+
+				// var_dump($data['data_sewa']);
 
 				//arahkan ke halaman form sewa
 				$this->load->view('include/header');
@@ -155,8 +157,9 @@ class PenyewaanReklame extends CI_Controller
 			}
 			else
 			{
-				$this->session->set_flashdata('pesan',"Proses sewa reklame berhasil"); 
-				echo $this->session->flashdata('pesan');
+				$this->session->set_flashdata('pesan',"Proses sewa reklame gagal, silahkan coba lagi"); 
+				redirect('PenyewaanReklame/sewa/'.$id_reklame); 
+
 			}
 		}
 		else
@@ -172,8 +175,8 @@ class PenyewaanReklame extends CI_Controller
 			}
 			else
 			{
-				$this->session->set_flashdata('pesan',"Proses sewa reklame berhasil"); 
-				echo $this->session->flashdata('pesan');
+				$this->session->set_flashdata('pesan',"Proses sewa reklame gagal, silahkan coba lagi"); 
+				redirect('PenyewaanReklame/detail/'.$id_sewa); 
 			} 
 		}
 			
@@ -215,13 +218,13 @@ class PenyewaanReklame extends CI_Controller
 		if ($insert==true)
 		{	
 			//tambahkan pesan berhasil 
-			$this->session->set_flashdata('pesan',"Pendaftaran Penyewa berhasil, silahkan login"); 
+			$this->session->set_flashdata('pesan',"Pendaftaran Penyewa berhasil, silahkan pilih titik reklame yang ingin anda sewa "); 
 			redirect('PenyewaanReklame/map'); 
 		}
 		else
 		{
-			echo "redirect ke halaman isi data perusahaan (form)";
-
+			$this->session->set_flashdata('pesan',"Pendaftaran Penyewa/perusahaan gagal, silahkan coba lagi");  
+			redirect('PenyewaanReklame');  
 		}
 	}
 
@@ -273,7 +276,7 @@ class PenyewaanReklame extends CI_Controller
 		$where2 = array('id_jenis' => $data_reklame['id_jenis_reklame'] );
 		$data['data_jenis_reklame'] = $this->M_jenis_reklame->detail($where2)->row_array(); 
 
-		$data['data_sewa'] =$data_sewa;
+		$data['data_sewa'] =$data_sewa; 
 		$data['id_sewa'] =$data_sewa['id_sewa'];
 		$data['data_penyewa'] =$data_penyewa;
 		$data['data_reklame'] =$data_reklame; 
@@ -284,9 +287,52 @@ class PenyewaanReklame extends CI_Controller
 		$this->load->view('include/footer'); 
 	}
 
-	public function hapus($id_sewa)
+	public function tolak_pengajuan($id_sewa)
 	{
-		echo "module belum di buat";
+		$data = array(
+			'status_sewa' => "tertolak", 
+		);
+		$where = array('id_sewa' => $id_sewa );
+		$update = $this->M_sewa->update( array('id_sewa' => $id_sewa ), $data);
+		if ($update==true)
+		{	
+			//tambahkan pesan berhasil 
+			$this->session->set_flashdata('pesan',"Tolak penyajuan sewa berhasil"); 
+			redirect('PenyewaanReklame'); 
+		}
+		else
+		{
+			$this->session->set_flashdata('pesan',"Tolak penyajuan sewa/perusahaan gagal, silahkan coba lagi");  
+			redirect('PenyewaanReklame');  
+		}
+	}  
+
+	public function printPermohonanIzin($id_sewa)
+	{
+
+		//get dta sewa dari id sewa 
+		$data_sewa = $this->M_sewa->detail( array('id_sewa' => $id_sewa ))->row_array(); 
+
+		//get data reklame dari data sewa 
+		$where3 = array('id_reklame' =>$data_sewa['id_reklame'] );
+		$data_reklame = $this->M_Reklame->detail($where3)->row_array();   
+
+		//get data penyewa dari data sewa 
+		$where3 = array('id_penyewa' =>$data_sewa['id_penyewa'] );
+		$data_penyewa = $this->M_penyewa->detail($where3)->row_array(); 
+
+		//get data user dari data penyewa 
+		$where3 = array('no_ktp' =>$data_penyewa['id_user'] );
+		$data_user = $this->M_user->detail($where3)->row_array(); 
+
+		$data['data_sewa'] =$data_sewa;
+		$data['data_penyewa'] =$data_penyewa;
+		$data['data_user'] =$data_user; 
+		$data['data_reklame'] =$data_reklame; 
+
+		$this->load->view('include/header');
+		$this->load->view('penyewaan/printPermohonanIzin', $data);
+		$this->load->view('include/footer'); 
 	}
 
 	public function print2($id_sewa)

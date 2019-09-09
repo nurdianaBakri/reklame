@@ -12,6 +12,16 @@
     <!-- Main content -->
     <section class="content"> 
 
+       <?php if ($this->session->flashdata('pesan')!=null)
+        { ?> 
+          <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Alert !</h4> 
+            <?php echo "<p>".$this->session->flashdata('pesan')."</p>"; ?>
+          </div> 
+          <?php 
+        }
+         ?>   
+
       <?php echo $map['js'];?>  
         <div class="row">
           <div class="col-md-12">

@@ -12,6 +12,17 @@
       <form class="form-horizontal" action="<?php echo base_url('index.php/PenyewaanReklame/do_sewa'); ?>" method="post" name="myForm"> 
 
           <div class="box">
+
+             <?php if ($this->session->flashdata('pesan')!=null)
+              { ?> 
+                <div class="alert alert-success" role="alert">
+                  <h4 class="alert-heading">Alert !</h4> 
+                  <?php echo "<p>".$this->session->flashdata('pesan')."</p>"; ?>
+                </div> 
+                <?php 
+              }
+               ?>  
+
              
             <div class="row">
               <!-- right column -->
@@ -165,7 +176,9 @@
                           
                       </div> 
 
-                      <?php if ($jenis_user=='admin'){ ?>
+                      <?php  
+
+                      if ($jenis_user=='admin'){ ?>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Status Bayar Pajak</label>
                           <div class="col-sm-4">
@@ -180,6 +193,7 @@
                             <select class="form-control" name="status_bayar_sewa">
                               <option value="belum di bayar" <?php if($data_sewa['status_sewa']=="belum di bayar"){ echo "selected";} ?>>Belum di bayar</option>
                               <option value="lunas" <?php if($data_sewa['status_sewa']=="lunas"){ echo "selected";} ?>>Lunas</option>
+                              <option value="tertolak" <?php if($data_sewa['status_sewa']=="tertolak"){ echo "selected";} ?>>Pengajuan Tertolak</option> 
                             </select>
                           </div>   
                         </div>
@@ -187,12 +201,12 @@
                          <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Status Bayar Pajak</label>
                           <div class="col-sm-4">
-                           <input type="text" class="form-control" name="status_bayar_pajak" value="belum di bayar" readonly >
+                           <input type="text" class="form-control" name="status_bayar_pajak" value="<?php echo $data_sewa['status_pajak'] ?>" readonly >
                           </div> 
 
-                          <label for="inputPassword3" class="col-sm-2 control-label">Status Bayar Sewa</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Status Sewa</label>
                           <div class="col-sm-4">
-                           <input type="text" class="form-control" name="status_bayar_sewa" value="belum di bayar" readonly > 
+                           <input type="text" class="form-control" name="status_bayar_sewa" value="<?php echo $data_sewa['status_sewa'] ?>" readonly > 
                           </div>   
                         </div>
                       <?php } ?>  
@@ -201,7 +215,14 @@
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success btn-flat" id="submit">Simpan</button> 
                         <?php if ($data_sewa['id_sewa']!=null): ?>
-                          <a target="_blank" class="btn btn-success btn-flat" href="<?php echo base_url()."index.php/PenyewaanReklame/print2/".$data_sewa['id_sewa'] ?>">Print Bukti</a>
+
+                          <?php if ($jenis_user=='admin'){ ?> 
+                              <a class="btn btn-danger btn-flat" href="<?php echo base_url()."index.php/PenyewaanReklame/tolak_pengajuan/".$data_sewa['id_sewa'] ?>">Tolak Pengajuan</a>  
+                            <?php } ?> 
+
+                          <a target="_blank" class="btn btn-success btn-flat" href="<?php echo base_url()."index.php/PenyewaanReklame/print2/".$data_sewa['id_sewa'] ?>">Print Perhitungan NSR</a> 
+
+                           <a target="_blank" class="btn btn-success btn-flat" href="<?php echo base_url()."index.php/PenyewaanReklame/printPermohonanIzin/".$data_sewa['id_sewa'] ?>">Print Permohoan Izin pemasangan penyelenggaraan reklame</a>
                         <?php endif ?>
                         
                     </div>

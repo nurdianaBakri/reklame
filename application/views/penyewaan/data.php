@@ -19,6 +19,17 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+
+                <?php if ($this->session->flashdata('pesan')!=null)
+              { ?> 
+                <div class="alert alert-success" role="alert">
+                  <h4 class="alert-heading">Alert !</h4> 
+                  <?php echo "<p>".$this->session->flashdata('pesan')."</p>"; ?>
+                </div> 
+                <?php 
+              }
+               ?>   
+
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr> 
@@ -28,8 +39,8 @@
                   <th>Lama Sewa (bulan)</th> 
                   <th>Status Pajak</th> 
                   <th>Status Sewa</th>  
-                  <th></th>
-                  <th></th>
+                  <th></th> 
+                  <!-- <th></th>  -->
                 </tr>
                 </thead>
                 <tbody>
@@ -65,7 +76,7 @@
                      
                 </td>
 
-                 <td> 
+               <!--   <td> 
                     <?php 
                     $jenis_user = $this->session->userdata('jenis_user');
                     if ($jenis_user=='admin') {
@@ -76,7 +87,7 @@
                     }
                     else{}?>
                      
-                </td>
+                </td> -->
                 </tr> 
                 <?php } ?>
               </tbody>
