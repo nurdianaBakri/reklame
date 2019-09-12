@@ -28,32 +28,24 @@ class M_map extends CI_Model
 		);
         	$data_sewa =$this->M_sewa->detail($where); 
         	if ($data_sewa->num_rows()>0)
-        	{
+        	{ 
 
-                        //daftar status map
-
-                        //tertolak
-
-                        //menunggu verifikasi  
-
-                        //belum di bayar
-
-                        //lunas 
-
-
+                        $jumlah_pelamar = $data_sewa->num_rows();
         		$data_sewa2 = $data_sewa->row_array(); 
 
-        		if ($data_sewa2['status_sewa']=='belum di bayar')
+        		if ($data_sewa2['status_sewa']=='slot ada')
         		{
-        			// $content3 = "<p>Alamat :  ".$row['alamat']."</p> <p>Status : Tersedia</p> <center><a target='_blank' href='index.php/PenyewaanReklame/sewa/".$row['id_reklame']."'><p>Sewa Sekarang</a></center>";
+        			$content3 = "<p>Alamat :  ".$row['alamat']."</p> <p>Status : Tersedia</p> <center><a target='_blank' href='index.php/PenyewaanReklame/sewa/".$row['id_reklame']."'><p>Sewa Sekarang</a></center>";  
 
-                                $content3 = "<p>Alamat :  ".$row['alamat']."</p> <p>Status : Tidak Tersedia</p> <center> Mulai sewa: ".$data_sewa2['tanggal_mulai_sewa']."</p> <p>Akhir Sewa :  ".$data_sewa2['tanggal_akhir_sewa']." </center>";  
-
-                                $marker['icon'] = './assets4/images/pinkuning.png';
+                                $marker['icon'] = './assets4/images/pinhijau.png';
         		}
                         else if ($data_sewa2['status_sewa']=='tertolak') {
                                 $content3 = "<p>Alamat :  ".$row['alamat']."</p> <p>Status : Tersedia</p> <center><a target='_blank' href='index.php/PenyewaanReklame/sewa/".$row['id_reklame']."'><p>Sewa Sekarang</a></center>";  
                                 $marker['icon'] = './assets4/images/pinhijau.png'; 
+                        }
+                        else if ($data_sewa2['status_sewa']=='belum di bayar' && $data_sewa2['status_pajak']=='belum di bayar') {
+                                $content3 = "<p>Alamat :  ".$row['alamat']."</p> <p>Status : Tersedia</p> <p>Jumlah Pemesan : ".$jumlah_pelamar."</p><center> <a target='_blank' href='index.php/PenyewaanReklame/sewa/".$row['id_reklame']."'><p>Sewa Sekarang</a></center>";  
+                                $marker['icon'] = './assets4/images/pinkuning.png'; 
                         }
                         //cek apakah hari ini lebih kecil sama dengan tanggal mulai sewa 
 

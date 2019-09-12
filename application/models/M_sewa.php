@@ -17,7 +17,7 @@ class M_sewa extends CI_Model
 	{
 		$this->db->where($where);
 		return $this->db->get('sewa');
-	}
+	} 
 
 	function update($where,$data)
 	{

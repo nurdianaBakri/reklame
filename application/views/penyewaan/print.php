@@ -128,8 +128,6 @@
                         {
                           $this->db->where('jenis_reklame',$data_reklame['id_jenis_reklame']);
                           $data_ketentuan = $this->db->get('ketentuan')->row_array();
-
-                          // var_dump($data_reklame['id_jenis_reklame']);
                           $x_luas =$data_ketentuan['luas_bidang_a'];
                           $x_ketinggian =$data_ketentuan['ketinggian'];
                         }
@@ -333,11 +331,7 @@
                       <div class="col-sm-1"></div>
                       <div class="col-sm-10"> 
 
-                        <?php 
-
-                        $masa_pajak = $data_sewa['lama_sewa']*$total_pjk_reklame;
-
-                        ?>
+                        <?php  $masa_pajak = $data_sewa['lama_sewa']*$total_pjk_reklame; ?>
                         
                         <table class="table table-striped"> 
                          <tr>
@@ -362,6 +356,27 @@
                       <div class="col-sm-1"></div>
                     </div>
 
+                     <div class="row">
+                      <div class="col-sm-1"></div>
+                      <div class="col-sm-10">  
+                        <table class="table table-striped" style="font-weight: bold;"> 
+                           <tr>
+                            <td>Status bayar pajak </td>
+                             <td>:</td>
+                             <td><?php echo $data_sewa['status_pajak']; ?></td>
+                           </tr>  
+
+                            <tr>
+                              <td>Status sewa</td>
+                             <td>:</td>
+                             <td><?php echo $data_sewa['status_sewa']; ?></td>
+                           </tr> 
+                         </table>
+                      </div>
+                      <div class="col-sm-1"></div>
+                    </div>
+
+
                   </div>
                 </div>
 
@@ -384,9 +399,9 @@
      document.body.innerHTML = printContents; 
      window.print(); 
      document.body.innerHTML = originalContents; 
-}
+  }
 
   $(document).ready(function(){
-    printDiv();
-});
+    // printDiv();
+  });
 </script>

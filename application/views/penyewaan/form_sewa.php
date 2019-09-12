@@ -104,7 +104,15 @@
                   <div class="box-header with-border">
                     <h3 class="box-title">Data Papan Reklame</h3>
                   </div> 
-                    <div class="box-body">   
+                    <div class="box-body">  
+
+                     <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Alamat Papan Reklame</label>
+                        <div class="col-sm-10">
+                          <div id="id_jenis_reklame" style="color: red"></div>
+                          <input type="text" class="form-control" name="alamat" readonly value="<?php echo $data_reklame['alamat'] ?>">
+                        </div> 
+                      </div>   
                      
                       <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Jenis Reklame</label>

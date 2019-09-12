@@ -155,6 +155,18 @@
                             <td>: <?= $data_reklame['alamat'] ?></td>
                           </tr> 
 
+                         
+                           <tr style="font-weight: bold;">
+                            <td>Status bayar pajak </td> 
+                             <td>: <?php echo $data_sewa['status_pajak']; ?></td>
+                           </tr>  
+
+                            <tr  style="font-weight: bold;">
+                              <td>Status sewa</td> 
+                             <td>: <?php echo $data_sewa['status_sewa']; ?></td>
+                           </tr> 
+                       
+
                            <tr >
                             <td colspan="2">Demikian permohonan yang saya ajukan dan atas perkenan Bapak saya sampaikan terimakasih </td>
                           </tr>

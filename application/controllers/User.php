@@ -157,13 +157,13 @@ class User extends CI_Controller
 		{	
 			//tambahkan pesan berhasil 
 			$this->session->set_flashdata('pesan',"update user berhasil, silahkan login");
-			redirect('User/profile/');
+			redirect('User/detail/'.$no_ktp);
 		}
 		else
 		{
 			//tambahkan pesan berhasil 
 			$this->session->set_flashdata('pesan',"update user gagal, silahkan cobba lagi");
-			redirect('User/profile/');
+			redirect('User/detail/'.$no_ktp);
 		}
 	}
 
@@ -226,7 +226,8 @@ class User extends CI_Controller
 		$this->load->view('include/header');
 		$this->load->view('user1/profile',$data);
 		$this->load->view('include/footer');
-	} 
+	}
+
 
 
 	public function hapus($no_ktp)

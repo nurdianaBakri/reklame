@@ -80,20 +80,19 @@ class PenyewaanReklame extends CI_Controller
 			$where3 = array('id_user' =>$this->session->userdata('no_ktp') );
 			$data_penyewa = $this->M_penyewa->detail($where3); 
 
-			// var_dump($data_penyewa->num_rows()); 
+			// var_dump($data_penyewa->num_rows());
+
 			if ($data_penyewa->num_rows()>0)
 			{
 				$data['data_penyewa'] = $data_penyewa->row_array();
 				$data['data_sewa']['lama_sewa'] = null;
 				$data['data_sewa']['tanggal_mulai_sewa'] = null; 
 				$data['data_sewa']['produk_rokok'] = 0; 
-				$data['data_sewa']['status_sewa'] = "belum di bayar"; 
 				$data['data_sewa']['status_pajak'] = "belum di bayar"; 
+				$data['data_sewa']['status_sewa'] = "belum di bayar"; 
 				$data['jenis_aksi'] ="add";  
 				$data['id_sewa'] =null;  
 				$data['data_sewa']['id_sewa'] =null; 
-
-				// var_dump($data['data_sewa']);
 
 				//arahkan ke halaman form sewa
 				$this->load->view('include/header');
@@ -153,12 +152,12 @@ class PenyewaanReklame extends CI_Controller
 			{	
 				//tambahkan pesan berhasil 
 				$this->session->set_flashdata('pesan',"Proses sewa reklame berhasil"); 
-				redirect('PenyewaanReklame/sewa/'.$id_reklame); 
+				redirect('PenyewaanReklame'); 
 			}
 			else
 			{
 				$this->session->set_flashdata('pesan',"Proses sewa reklame gagal, silahkan coba lagi"); 
-				redirect('PenyewaanReklame/sewa/'.$id_reklame); 
+				redirect('PenyewaanReklame'); 
 
 			}
 		}
@@ -276,7 +275,7 @@ class PenyewaanReklame extends CI_Controller
 		$where2 = array('id_jenis' => $data_reklame['id_jenis_reklame'] );
 		$data['data_jenis_reklame'] = $this->M_jenis_reklame->detail($where2)->row_array(); 
 
-		$data['data_sewa'] =$data_sewa; 
+		$data['data_sewa'] =$data_sewa;
 		$data['id_sewa'] =$data_sewa['id_sewa'];
 		$data['data_penyewa'] =$data_penyewa;
 		$data['data_reklame'] =$data_reklame; 
