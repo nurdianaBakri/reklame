@@ -402,6 +402,6 @@
   }
 
   $(document).ready(function(){
-    // printDiv();
+    printDiv();
   });
 </script>
