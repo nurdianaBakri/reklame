@@ -42,12 +42,12 @@
                   </div>  
 
                    <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Panjang</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label">Panjang (M)</label>
                     <div class="col-sm-4">
                       <div id="panjang" style="color: red"></div>
                       <input type="number" class="form-control" name="panjang" value="<?php echo $data['panjang'] ?>" required>
                     </div>
-                     <label for="inputPassword3" class="col-sm-2 control-label">Lebar</label>
+                     <label for="inputPassword3" class="col-sm-2 control-label">Lebar (M)</label>
                     <div class="col-sm-4">
                       <div id="lebar" style="color: red"></div>
                       <input type="number" class="form-control" name="lebar" value="<?php echo $data['lebar'] ?>" required>
@@ -55,7 +55,7 @@
                   </div>  
 
                    <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Ketinggian</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label">Ketinggian (M)</label>
                     <div class="col-sm-4">
                       <div id="ketinggian" style="color: red"></div>
                       <input type="number" class="form-control" name="ketinggian" value="<?php echo $data['ketinggian'] ?>" required>
@@ -68,16 +68,24 @@
                   </div>   
 
                    <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Latitude</label>
-                    <div class="col-sm-4">
-                      <div id="latitude" style="color: red"></div>
-                      <input type="number" class="form-control" name="latitude" value="<?php echo $data['latitude'] ?>" required>
-                    </div>
-                     <label for="inputPassword3" class="col-sm-2 control-label">Longitude</label>
-                    <div class="col-sm-4">
-                      <div id="longitude" style="color: red"></div>
-                      <input type="number" class="form-control" name="longitude" value="<?php echo $data['longitude'] ?>" required>
-                    </div>
+                    <label for="inputPassword3" class="col-sm-2 control-label">Latitude : </label> 
+ 
+                    <div class="col-sm-4"> 
+                        <input type="text" class="form-control" name="latitude" id="latitude" value="<?php echo $data['latitude'] ?>" required readonly> 
+                    </div> 
+
+                     <label for="inputPassword3" class="col-sm-2 control-label">Longitude : </label> 
+                    <div class="col-sm-4">  
+                        <input type="text" class="form-control" name="longitude" id="longitude" value="<?php echo $data['longitude'] ?>" required readonly> 
+                    </div> 
+                  </div>   
+
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Map (Drag pin untuk menentukan lokasi) </label>  
+                    <div class="col-sm-10">  
+                       <?php echo $map['js'];?>   
+                          <?php echo $map['html'];?>  
+                    </div> 
                   </div>   
 
                    <div class="form-group">

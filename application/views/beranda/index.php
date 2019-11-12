@@ -1,5 +1,11 @@
 
 <div class="container"  style="margin-top:60px">  
+ 
+    <div class="jumbotron">
+      <h1 class="display-4">Selamat Datang !</h1> 
+      <hr class="my-4">
+      <p>Di sistem informasi Penyewaan reklame Kota Mataram, silahkan pilih lokasi reklame yang ingin anda sewa dengan cara meng-klik pin, kemudian klik sewa sekarang.</p> 
+    </div>
 
     <div class="row">
         <div class="col-md-9">

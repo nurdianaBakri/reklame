@@ -14,8 +14,7 @@ class Map extends CI_Controller {
 		$this->load->view('map/index',$data);
 		$this->load->view('include/footer'); 
 	} 
-
-
+ 
 	public function index2()
 	{
 		$data = $this->M_map->getAll();

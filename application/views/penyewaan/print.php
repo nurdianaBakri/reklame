@@ -272,7 +272,6 @@
                           $totalNJOP_nilaiStrategis = $totalNJOP+$total_nilai_strategis;
                           $tarif_pajak = ($totalNJOP_nilaiStrategis*25)/100;
 
-
                           $pajak_produk_rokok=0;
                           $TXTpajak_produk_rokok="";
                           if ($data_sewa['produk_rokok']==1)

@@ -21,14 +21,11 @@
                 <h3 class="box-title">Tabel User  </h3> 
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-
-                
-
+            <div class="box-body"> 
              <?php if ($this->session->flashdata('pesan')!=null)
               { ?> 
                 <div class="alert alert-success" role="alert">
-                  <h4 class="alert-heading">Alert !</h4> 
+                  <h4 class="alert-heading">Informasi !</h4> 
                   <?php echo "<p>".$this->session->flashdata('pesan')."</p>"; ?>
                 </div> 
                 <?php 

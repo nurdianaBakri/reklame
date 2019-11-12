@@ -11,8 +11,7 @@ class Jenis_reklame extends CI_Controller
 		$this->load->view('include/header');
 		$this->load->view('jenis_reklame/data',$data);
 		$this->load->view('include/footer');
-	}   
- 
+	}    
 
 	public function hapus($id)
 	{

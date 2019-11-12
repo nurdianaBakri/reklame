@@ -90,6 +90,10 @@
             <a href="<?php echo base_url();?>User">
               <i class="fa fa-circle-o"></i> user </a>
           </li> 
+           <li>
+            <a href="<?php echo base_url();?>Kecamatan">
+              <i class="fa fa-circle-o"></i> Kecamatan </a>
+          </li> 
         <?php } ?>
          
         <li class="treeview">
