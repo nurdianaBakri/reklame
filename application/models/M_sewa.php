@@ -23,8 +23,18 @@ class M_sewa extends CI_Model
 	{
 		$this->db->where($where);
 		return $this->db->update('sewa', $data);
+	} 
+
+	public function get_laporan($mulai, $akhir)
+	{
+		$q ="SELECT * FROM sewa where  tanggal_mulai_sewa between '$mulai' and '$akhir'";
+		$hasil = $this->db->query($q)->result_array();
+
+		$balikan = array(
+			'q' => $q, 
+			'hasil' => $hasil, 
+		); 
+		return $balikan;
 	}
-   
-    
 }
 ?>

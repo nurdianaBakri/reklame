@@ -38,8 +38,10 @@ class User extends CI_Controller
 	
 	public function daftar()
 	{
-		$this->load->view('header');
-		$this->load->view('beranda/form_daftar');
+		$data['kecamatan']=$this->M_Kecamatan->getAll();
+
+		$this->load->view('header',$data);
+		$this->load->view('beranda/form_daftar',$data);
 		$this->load->view('footer');
 	} 
 
@@ -116,6 +118,7 @@ class User extends CI_Controller
 		$no_hp = $this->input->post('no_hp');
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
+		$password2 = $this->input->post('password2');
 
 		$data = array(
 			'no_ktp'=>$no_ktp,
@@ -136,7 +139,16 @@ class User extends CI_Controller
 
 		if ($password!="" || $password!=null)
 		{
-			$data['password'] = md5($password);
+			if ($password==$password2)
+			{
+				# code...
+				$data['password'] = md5($password);
+			}
+			else
+			{
+				$this->session->set_flashdata('pesan',"update user gagal, karena password dan konfirmasi password tidak cocok, silahkan login");
+				redirect('User/detail/'.$no_ktp);
+			}
 		}
 
 		if (empty($_FILES['file_ktp']['name'])) {
@@ -200,6 +212,8 @@ class User extends CI_Controller
 
 	public function detail($no_ktp)
 	{
+		$data['kecamatan']=$this->M_Kecamatan->getAll();
+
 		$where = array(
 			'no_ktp' => $no_ktp, 
 		);
@@ -213,6 +227,9 @@ class User extends CI_Controller
 	public function profile()
 	{
 		$no_ktp = $this->session->userdata('no_ktp');
+		$data['kecamatan']=$this->M_Kecamatan->getAll();
+
+		
 		$where = array(
 			'no_ktp' => $no_ktp, 
 		);
@@ -227,8 +244,6 @@ class User extends CI_Controller
 		$this->load->view('user1/profile',$data);
 		$this->load->view('include/footer');
 	}
-
-
 
 	public function hapus($no_ktp)
 	{

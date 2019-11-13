@@ -26,7 +26,7 @@
                    <?php if ($this->session->flashdata('pesan')!=null)
                   { ?> 
                     <div class="alert alert-success" role="alert">
-                      <h4 class="alert-heading">Alert !</h4> 
+                      <h4 class="alert-heading">Informasi !</h4> 
                       <?php echo "<p>".$this->session->flashdata('pesan')."</p>"; ?>
                     </div> 
                     <?php 
@@ -96,7 +96,17 @@
                     <label for="inputPassword3" class="col-sm-2 control-label">Kecamatan</label>
                     <div class="col-sm-4">
                       <div id="kecamatan"></div>
-                      <input type="text" class="form-control" value="<?php echo $data['kecamatan'] ?>" name="kecamatan" required>
+                      <select class="form-control" name="kecamatan">
+                        <?php
+
+                        foreach ($kecamatan as $row) {
+                          ?>
+                            <option value="<?= $row['id_kecamatan'] ?>" <?php if($data['kecamatan']==$row['id_kecamatan']){ echo "selected";} ?>><?= $row['nama_kecamatan'] ?></option> 
+                          <?php
+                        }
+                        ?>
+                      </select>
+                      <!-- <input type="text" class="form-control" value="<?php echo $data['kecamatan'] ?>" name="kecamatan" required> -->
                     </div>
                     <label for="inputPassword3" class="col-sm-2 control-label">Pekerjaan</label>
                     <div class="col-sm-4">
@@ -135,9 +145,15 @@
                   <div class="form-group">
  
                     <label for="inputPassword3" class="col-sm-2 control-label">Paswword (Masukkan password baru jika ingin merubah password)</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-4">
                       <div id="password"></div>
                       <input type="password" class="form-control"   name="password">
+                    </div>
+
+                    <label for="inputPassword3" class="col-sm-2 control-label">Konfirmasi Paswword </label>
+                    <div class="col-sm-4">
+                      <div id="password2"></div>
+                      <input type="password" class="form-control"   name="password2">
                     </div>
                   </div> 
 

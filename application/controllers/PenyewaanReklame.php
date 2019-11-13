@@ -336,7 +336,6 @@ class PenyewaanReklame extends CI_Controller
 
 	public function print2($id_sewa)
 	{
-
 		//get dta sewa dari id sewa 
 		$data_sewa = $this->M_sewa->detail( array('id_sewa' => $id_sewa ))->row_array();
 
